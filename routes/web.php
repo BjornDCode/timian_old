@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/plans', 'SubscriptionsController@index');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

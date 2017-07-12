@@ -30,18 +30,14 @@ class AuthTest extends TestCase
     public function an_authorized_user_can_see_the_plans_page()
     {
 
-        // TODO: Update test to check for plan
-
-        // Given we have a non subscribed user
         $user = create('App\Models\User');
+        $plan = create('App\Models\Plan');
 
-        // When they login
         $this->signIn($user);
 
-        // They can see the plans page
         $response = $this->get('/plans');
 
-        $response->assertSee('Plans');
+        $response->assertSee($plan->name);
 
     }
 
@@ -51,13 +47,10 @@ class AuthTest extends TestCase
 
         $this->withExceptionHandling();
 
-        // Given we have a non authorized user
         $user = create('App\Models\User');
 
-        // When they go to the plans page
         $response = $this->get('/plans');
 
-        // They will be redirected to the login page
         $response->assertRedirect('/login');
 
     }

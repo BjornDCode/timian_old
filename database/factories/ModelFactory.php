@@ -23,3 +23,20 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Plan::class, function($faker) {
+    return [
+        'name' => $faker->word,
+        'price' => $faker->numberBetween($min = 100, $max = 999),
+        'description' => $faker->sentence
+    ];
+});
+
+$factory->define(App\Models\PlanBenefit::class, function($faker) {
+    return [
+        'plan_id' => function() {
+            factory('App\Models\Plan')->create()->id;
+        },
+        'value' => $faker->sentence
+    ];
+});

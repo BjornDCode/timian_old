@@ -19,10 +19,10 @@ class AuthTest extends TestCase
         $this->signIn($user);
 
         // When they access the dashboard
-        $this->get('/dashboard');
+        $response = $this->get('/dashboard');
 
         // They should see the plans page
-        $this->assertRedirect('/plans');
+        $response->assertRedirect('/plans');
 
     }
 

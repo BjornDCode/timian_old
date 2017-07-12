@@ -13,7 +13,7 @@ class AuthTest extends TestCase
     public function an_authorized_but_non_subscribed_user_will_see_the_plans_page()
     {
         // Given we have a non subscribed user
-        $user = create('App\User');
+        $user = create('App\Models\User');
 
         // When they login
         $this->signIn($user);

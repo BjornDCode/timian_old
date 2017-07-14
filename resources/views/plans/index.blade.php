@@ -8,7 +8,9 @@
                     <div class="panel-body">
                         <h1>Plans</h1>
 
-                        <div class="plans">
+                        <plans :plans="{{ $plans }}"></plans>
+
+                        {{-- <div class="plans">
                             @foreach ($plans as $plan)
                                 @component('plans.plan', ['benefits' => $plan->benefits, 'description' => $plan->description, 'formattedPrice' => $plan->getFormattedPrice()])
                                     @slot('name')
@@ -20,7 +22,7 @@
                                     @endslot
                                 @endcomponent
                             @endforeach
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

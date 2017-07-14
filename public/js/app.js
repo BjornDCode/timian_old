@@ -782,7 +782,9 @@ module.exports = __webpack_require__(40);
 
 __webpack_require__(10);
 
-Vue.component('CheckoutForm', __webpack_require__(36));
+Vue.component('Plans', __webpack_require__(53));
+Vue.component('Plan', __webpack_require__(56));
+Vue.component('CheckoutForm', __webpack_require__(50));
 
 var app = new Vue({
     el: '#app'
@@ -41345,46 +41347,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(37)(
-  /* script */
-  __webpack_require__(38),
-  /* template */
-  __webpack_require__(39),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/asbjornhansen/Documents/Code/timian/resources/assets/js/components/CheckoutForm.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] CheckoutForm.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b3229e88", Component.options)
-  } else {
-    hotAPI.reload("data-v-b3229e88", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 36 */,
 /* 37 */
 /***/ (function(module, exports) {
 
@@ -41482,7 +41445,64 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 38 */
+/* 38 */,
+/* 39 */,
+/* 40 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(37)(
+  /* script */
+  __webpack_require__(51),
+  /* template */
+  __webpack_require__(52),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/asbjornhansen/Documents/Code/timian/resources/assets/js/components/plans/CheckoutForm.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CheckoutForm.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0180ae41", Component.options)
+  } else {
+    hotAPI.reload("data-v-0180ae41", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41491,11 +41511,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['name', 'description', 'price'],
+    props: ['plan'],
 
     data: function data() {
         return {
@@ -41503,7 +41521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             formData: {
                 stripeEmail: '',
                 stripeToken: '',
-                plan: this.name
+                plan: ''
             }
         };
     },
@@ -41526,39 +41544,244 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
 
+    watch: {
+        plan: function plan(newPlan) {
+            this.formData.plan = newPlan.name;
+            this.buy();
+        }
+    },
+
     methods: {
         buy: function buy() {
             this.stripe.open({
-                name: this.name,
-                description: this.description,
+                name: this.plan.name,
+                description: this.plan.description,
                 zipCode: true,
-                amount: this.price
+                amount: this.plan.price
             });
         }
     }
 });
 
 /***/ }),
-/* 39 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('form', {
-    staticClass: "checkout-form",
-    attrs: {
-      "action": "",
-      "method": "post"
+  return _c("div")
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0180ae41", module.exports)
+  }
+}
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(37)(
+  /* script */
+  __webpack_require__(54),
+  /* template */
+  __webpack_require__(55),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/asbjornhansen/Documents/Code/timian/resources/assets/js/components/plans/Plans.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Plans.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6d5f0363", Component.options)
+  } else {
+    hotAPI.reload("data-v-6d5f0363", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['plans'],
+
+    data: function data() {
+        return {
+            selectedPlanId: 1,
+            selectedPlanObject: {}
+        };
+    },
+
+
+    methods: {
+        setSelectedPlan: function setSelectedPlan(id) {
+            this.selectedPlanId = id;
+            this.activateCheckout();
+        },
+        activateCheckout: function activateCheckout() {
+            this.selectedPlanObject = this.findPlanById(this.selectedPlanId);
+        },
+        findPlanById: function findPlanById(id) {
+            return this.plans.find(function (plan) {
+                return plan.id == id;
+            });
+        }
     }
-  }, [_c('button', {
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "plans"
+  }, _vm._l((_vm.plans), function(plan) {
+    return _c('plan', {
+      key: "plan.id",
+      attrs: {
+        "plan": plan
+      },
+      on: {
+        "selectPlan": _vm.setSelectedPlan
+      }
+    })
+  })), _vm._v(" "), _c('checkout-form', {
+    attrs: {
+      "plan": _vm.selectedPlanObject
+    }
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6d5f0363", module.exports)
+  }
+}
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(37)(
+  /* script */
+  __webpack_require__(57),
+  /* template */
+  __webpack_require__(58),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/asbjornhansen/Documents/Code/timian/resources/assets/js/components/plans/Plan.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Plan.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3d3755c0", Component.options)
+  } else {
+    hotAPI.reload("data-v-3d3755c0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['plan'],
+
+    methods: {
+        selectProduct: function selectProduct() {
+            this.$emit('selectPlan', this.plan.id);
+        }
+    }
+});
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "plan"
+  }, [_c('div', {
+    staticClass: "plan-header"
+  }, [_c('h2', [_vm._v(_vm._s(this.plan.name))]), _vm._v(" "), _c('h3', [_vm._v(_vm._s(this.plan.price / 100) + ",-")])]), _vm._v(" "), _c('ul', {
+    staticClass: "benefits"
+  }, _vm._l((_vm.plan.benefits), function(benefit) {
+    return _c('li', [_vm._v(_vm._s(benefit.value))])
+  })), _vm._v(" "), _c('button', {
     staticClass: "btn btn-primary",
     attrs: {
-      "type": "submit"
+      "type": "button"
     },
     on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.buy($event)
-      }
+      "click": _vm.selectProduct
     }
   }, [_vm._v("Select Plan")])])
 },staticRenderFns: []}
@@ -41566,15 +41789,9 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-b3229e88", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-3d3755c0", module.exports)
   }
 }
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

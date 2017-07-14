@@ -1,12 +1,10 @@
 <template>
-    <form class="checkout-form" action="" method="post">
-        <button type="submit" @click.prevent="buy" class="btn btn-primary" >Select Plan</button>
-    </form>
+
 </template>
 
 <script>
     export default {
-        props: ['name', 'description', 'price'],
+        props: ['plan'],
 
         data() {
             return {
@@ -14,7 +12,7 @@
                 formData: {
                     stripeEmail: '',
                     stripeToken: '',
-                    plan: this.name
+                    plan: ''
                 }
             };
         },
@@ -35,13 +33,20 @@
             });
         },
 
+        watch: {
+            plan: function(newPlan) {
+                this.formData.plan = newPlan.name;
+                this.buy();
+            }
+        },
+
         methods: {
             buy() {
                 this.stripe.open({
-                    name: this.name,
-                    description: this.description,
+                    name: this.plan.name,
+                    description: this.plan.description,
                     zipCode: true,
-                    amount: this.price
+                    amount: this.plan.price
                 });
             }
         }

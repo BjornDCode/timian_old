@@ -12,4 +12,9 @@ class Plan extends Model
         return $this->hasMany(PlanBenefit::class);
     }
 
+    public function getFormattedPrice()
+    {
+        return $this->price / 100;
+    }
+
 }

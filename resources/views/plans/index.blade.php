@@ -10,7 +10,7 @@
 
                         <div class="plans">
                             @foreach ($plans as $plan)
-                                @component('plans.plan', ['benefits' => $plan->benefits])
+                                @component('plans.plan', ['benefits' => $plan->benefits, 'description' => $plan->description, 'formattedPrice' => $plan->getFormattedPrice()])
                                     @slot('name')
                                         {{ $plan->name }}
                                     @endslot

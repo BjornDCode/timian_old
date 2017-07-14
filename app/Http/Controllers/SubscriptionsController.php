@@ -19,4 +19,16 @@ class SubscriptionsController extends Controller
         return view('plans.index', compact('plans'));
     }
 
+    public function create()
+    {
+        $plan = request('plan');
+        $stripeToken = request('stripeToken');
+        $user = auth()->user();
+
+        $user->newSubscription($plan, $plan)->create($stripeToken);
+
+        return redirect()->route('dashboard');
+
+    }
+
 }

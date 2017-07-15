@@ -7,7 +7,7 @@
         <ul class="benefits">
             <li v-for="benefit in plan.benefits">{{ benefit.value }}</li>
         </ul>
-        <button type="button" class="btn btn-primary" v-on:click="selectProduct">Select Plan</button>
+        <button type="button" class="btn btn-primary" v-on:click="selectProduct">Select Plan</button> 
     </div>
 </template>
 

@@ -23,6 +23,7 @@
                 key: this.stripeKey,
                 image: "https://stripe.com/img/documentation/checkout/marketplace.png",
                 locale: "auto",
+                panelLabel: "Subscribe For",
                 token: token => {
                     this.formData.stripeToken = token.id;
                     this.formData.stripeEmail = token.email;

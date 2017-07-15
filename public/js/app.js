@@ -41958,6 +41958,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             key: this.stripeKey,
             image: "https://stripe.com/img/documentation/checkout/marketplace.png",
             locale: "auto",
+            panelLabel: "Subscribe For",
             token: function token(_token) {
                 _this.formData.stripeToken = _token.id;
                 _this.formData.stripeEmail = _token.email;

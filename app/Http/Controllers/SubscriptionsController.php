@@ -29,4 +29,12 @@ class SubscriptionsController extends Controller
 
     }
 
+    public function subscribed()
+    {
+        return redirect()
+            ->route('dashboard')
+            ->with('flash', 'You are now subscribed')
+            ->with('flash-type', 'success');
+    }
+
 }

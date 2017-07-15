@@ -21,3 +21,4 @@ Route::get('/plans', 'SubscriptionsController@index');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::post('/subscribe', 'SubscriptionsController@create');
+Route::get('/subscribed', 'SubscriptionsController@subscribed');

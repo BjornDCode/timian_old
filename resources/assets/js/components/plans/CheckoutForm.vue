@@ -31,8 +31,7 @@
                     window.axios.post('/subscribe', this.$data.formData)
                         .then(response => {
                             this.$emit('isLoading', false);
-                            // window.location.href = window.url + "/dashboard";
-                            window.flash('success', 'You are now subscribed');
+                            window.location.href = window.url + "/subscribed";
                         });
                 }
             });

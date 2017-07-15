@@ -26,9 +26,13 @@
                 token: token => {
                     this.formData.stripeToken = token.id;
                     this.formData.stripeEmail = token.email;
+                    this.$emit('isLoading', true);
 
                     window.axios.post('/subscribe', this.$data.formData)
-                        .then(response => window.location.href = window.url + "/dashboard" );
+                        .then(response => {
+                            this.$emit('isLoading', false);
+                            window.location.href = window.url + "/dashboard";
+                        });
                 }
             });
         },

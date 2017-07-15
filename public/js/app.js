@@ -785,6 +785,7 @@ __webpack_require__(10);
 Vue.component('Plans', __webpack_require__(53));
 Vue.component('Plan', __webpack_require__(56));
 Vue.component('CheckoutForm', __webpack_require__(50));
+Vue.component('Loader', __webpack_require__(59));
 
 var app = new Vue({
     el: '#app'
@@ -41535,9 +41536,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             token: function token(_token) {
                 _this.formData.stripeToken = _token.id;
                 _this.formData.stripeEmail = _token.email;
+                _this.$emit('isLoading', true);
 
                 window.axios.post('/subscribe', _this.$data.formData).then(function (response) {
-                    return window.location.href = window.url + "/dashboard";
+                    _this.$emit('isLoading', false);
+                    window.location.href = window.url + "/dashboard";
                 });
             }
         });
@@ -41633,6 +41636,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['plans'],
@@ -41640,7 +41644,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             selectedPlanId: 1,
-            selectedPlanObject: {}
+            selectedPlanObject: {},
+            isLoading: false
         };
     },
 
@@ -41657,6 +41662,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.plans.find(function (plan) {
                 return plan.id == id;
             });
+        },
+        setLoadingState: function setLoadingState(state) {
+            this.isLoading = state;
         }
     }
 });
@@ -41666,7 +41674,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
+  return _c('div', {
+    staticClass: "plans-container"
+  }, [_c('div', {
     staticClass: "plans"
   }, _vm._l((_vm.plans), function(plan) {
     return _c('plan', {
@@ -41681,7 +41691,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })), _vm._v(" "), _c('checkout-form', {
     attrs: {
       "plan": _vm.selectedPlanObject
+    },
+    on: {
+      "isLoading": _vm.setLoadingState
     }
+  }), _vm._v(" "), _c('loader', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.isLoading),
+      expression: "isLoading"
+    }]
   })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -41790,6 +41810,78 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-3d3755c0", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(37)(
+  /* script */
+  __webpack_require__(60),
+  /* template */
+  __webpack_require__(61),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/asbjornhansen/Documents/Code/timian/resources/assets/js/components/common/Loader.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Loader.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-08fba956", Component.options)
+  } else {
+    hotAPI.reload("data-v-08fba956", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "loader"
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-08fba956", module.exports)
   }
 }
 

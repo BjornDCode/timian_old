@@ -1,9 +1,10 @@
 <template>
-    <div>
+    <div class="plans-container">
         <div class="plans">
             <plan v-for="plan in plans" :plan="plan" key="plan.id" v-on:selectPlan="setSelectedPlan"></plan>
         </div>
-        <checkout-form :plan="selectedPlanObject"></checkout-form>
+        <checkout-form :plan="selectedPlanObject" v-on:isLoading="setLoadingState"></checkout-form>
+        <loader v-show="isLoading"></loader>
     </div>
 </template>
 
@@ -14,7 +15,8 @@
         data() {
             return {
                 selectedPlanId: 1,
-                selectedPlanObject: {}
+                selectedPlanObject: {},
+                isLoading: false
             }
         },
 
@@ -28,6 +30,9 @@
             },
             findPlanById(id) {
                 return this.plans.find(plan => plan.id == id);
+            },
+            setLoadingState(state) {
+                this.isLoading = state;
             }
         }
     }

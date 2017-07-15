@@ -34,7 +34,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function isSubscribedToAnyPlan()
+    public function isActive()
     {
         return ($this->subscribed('personal') || $this->subscribed('professional') || $this->subscribed('enterprise') );
     }

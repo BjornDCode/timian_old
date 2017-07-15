@@ -9,20 +9,6 @@
                         <h1>Plans</h1>
 
                         <plans :plans="{{ $plans }}"></plans>
-
-                        {{-- <div class="plans">
-                            @foreach ($plans as $plan)
-                                @component('plans.plan', ['benefits' => $plan->benefits, 'description' => $plan->description, 'formattedPrice' => $plan->getFormattedPrice()])
-                                    @slot('name')
-                                        {{ $plan->name }}
-                                    @endslot
-
-                                    @slot('price')
-                                        {{ $plan->price }}
-                                    @endslot
-                                @endcomponent
-                            @endforeach
-                        </div> --}}
                     </div>
                 </div>
             </div>

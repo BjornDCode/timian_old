@@ -41,12 +41,12 @@
         watch: {
             plan: function(newPlan) {
                 this.formData.plan = newPlan.name;
-                this.buy();
+                this.subscribe();
             }
         },
 
         methods: {
-            buy() {
+            subscribe() {
                 this.stripe.open({
                     name: this.plan.name,
                     description: this.plan.description,

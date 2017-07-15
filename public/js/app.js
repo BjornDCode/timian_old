@@ -41976,12 +41976,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     watch: {
         plan: function plan(newPlan) {
             this.formData.plan = newPlan.name;
-            this.buy();
+            this.subscribe();
         }
     },
 
     methods: {
-        buy: function buy() {
+        subscribe: function subscribe() {
             this.stripe.open({
                 name: this.plan.name,
                 description: this.plan.description,

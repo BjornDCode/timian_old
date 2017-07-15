@@ -41945,7 +41945,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            stripeKey: window.Timian.stripeKey,
+            stripeKey: Timian.stripeKey,
             formData: {
                 stripeEmail: '',
                 stripeToken: '',
@@ -41968,8 +41968,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.$emit('isLoading', true);
 
                 window.axios.post('/subscribe', _this.$data.formData).then(function (response) {
+                    console.log('Redirecting...');
                     _this.$emit('isLoading', false);
-                    window.location.href = window.Timian.url + "/subscribed";
+                    window.location.href = Timian.url + "/subscribed";
                 }).catch(function (error) {
                     _this.$emit('isLoading', false);
                     window.flash('danger', error.response.data.status);

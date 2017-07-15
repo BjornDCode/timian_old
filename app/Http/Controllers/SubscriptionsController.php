@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Models\Plan;
+use App\Http\Requests\SubscribeFormRequest;
+
 
 class SubscriptionsController extends Controller
 {
@@ -19,7 +22,7 @@ class SubscriptionsController extends Controller
         return view('plans.index', compact('plans'));
     }
 
-    public function create()
+    public function create(SubscribeFormRequest $requests)
     {
         $plan = request('plan');
         $stripeToken = request('stripeToken');
@@ -27,7 +30,7 @@ class SubscriptionsController extends Controller
 
         try {
             $user->newSubscription($plan, $plan)->create($stripeToken);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['status' => $e->getMessage()], 422);
         }
 

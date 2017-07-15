@@ -16,7 +16,7 @@ class Subscribed
     public function handle($request, Closure $next)
     {
 
-        if ($request->user() && ! $request->user()->isSubscribedToAnyPlan() ) {
+        if ($request->user() && ! $request->user()->isActive() ) {
             return redirect('/plans');
         }
 

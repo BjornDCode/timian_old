@@ -897,6 +897,13 @@ var app = new Vue({
 
 window._ = __webpack_require__(12);
 
+window.Timian = {
+    token: document.head.querySelector('meta[name="csrf-token"]').content,
+    url: document.head.querySelector('meta[name="url"]').content,
+    user: document.head.querySelector('meta[name="user"]').content,
+    stripeKey: document.head.querySelector('meta[name="stripe-key"]').content
+};
+
 try {
     window.$ = window.jQuery = __webpack_require__(14);
 
@@ -907,16 +914,11 @@ window.axios = __webpack_require__(16);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-var token = document.head.querySelector('meta[name="csrf-token"]');
-
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+if (Timian.token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = Timian.token;
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
-
-window.stripeKey = document.head.querySelector('meta[name="stripe-key"]').content;
-window.url = document.head.querySelector('meta[name="url"]').content;
 
 window.Vue = __webpack_require__(36);
 
@@ -41943,7 +41945,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            stripeKey: window.stripeKey,
+            stripeKey: window.Timian.stripeKey,
             formData: {
                 stripeEmail: '',
                 stripeToken: '',
@@ -41965,8 +41967,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.$emit('isLoading', true);
 
                 window.axios.post('/subscribe', _this.$data.formData).then(function (response) {
+                    console.log('redirect');
                     _this.$emit('isLoading', false);
-                    window.location.href = window.url + "/subscribed";
+                    window.location.href = window.Timian.url + "/subscribed";
                 }).catch(function (error) {
                     _this.$emit('isLoading', false);
                     window.flash('danger', error.response.data.status);

@@ -8,7 +8,7 @@
 
         data() {
             return {
-                stripeKey: window.stripeKey,
+                stripeKey: window.Timian.stripeKey,
                 formData: {
                     stripeEmail: '',
                     stripeToken: '',
@@ -31,8 +31,9 @@
 
                     window.axios.post('/subscribe', this.$data.formData)
                         .then(response => {
+                            console.log('redirect');
                             this.$emit('isLoading', false);
-                            window.location.href = window.url + "/subscribed";
+                            window.location.href = window.Timian.url + "/subscribed";
                         })
                         .catch(error => {
                             this.$emit('isLoading', false);

@@ -41965,8 +41965,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 window.axios.post('/subscribe', _this.$data.formData).then(function (response) {
                     _this.$emit('isLoading', false);
-                    window.flash('You are now subscribed', 'success');
                     // window.location.href = window.url + "/dashboard";
+                    window.flash('success', 'You are now subscribed');
                 });
             }
         });

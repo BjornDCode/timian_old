@@ -24,3 +24,9 @@ window.stripeKey = document.head.querySelector('meta[name="stripe-key"]').conten
 window.url =  document.head.querySelector('meta[name="url"]').content;
 
 window.Vue = require('vue');
+
+window.events = new Vue();
+
+window.flash = function(type, message) {
+    window.events.$emit('flash', type, message);
+}

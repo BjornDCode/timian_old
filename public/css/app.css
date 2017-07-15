@@ -8350,10 +8350,6 @@ button.close {
   }
 }
 
-.plans-container {
-  position: relative;
-}
-
 .loader {
   position: absolute;
   top: 0;
@@ -8394,5 +8390,39 @@ button.close {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+
+.flash-message {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.flash-message.slide-fade-enter-active,
+.flash-message.slide-fade-leave-active {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.flash-message.slide-fade-enter {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+}
+
+.flash-message.slide-fade-enter-to {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+.flash-message.slide-fade-leave-to {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+}
+
+.plans-container {
+  position: relative;
 }
 

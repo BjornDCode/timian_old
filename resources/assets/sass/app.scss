@@ -9,5 +9,6 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 // Components
-@import "components/plans/plans";
 @import "components/common/loader";
+@import "components/common/flash";
+@import "components/plans/plans";

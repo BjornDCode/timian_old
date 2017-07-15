@@ -27,8 +27,6 @@ class SubscriptionsController extends Controller
 
         $user->newSubscription($plan, $plan)->create($stripeToken);
 
-        return redirect()->route('dashboard');
-
     }
 
 }

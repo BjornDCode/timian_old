@@ -75,7 +75,11 @@
         </nav>
 
         @yield('content')
+
+        <flash message="{{ session('flash') }}" type="{{ session('flash-type') }}"></flash>
+
     </div>
+
 
     <!-- Scripts -->
     <script src="https://checkout.stripe.com/checkout.js"></script>

@@ -25,7 +25,13 @@ class SubscriptionsController extends Controller
         $stripeToken = request('stripeToken');
         $user = auth()->user();
 
-        $user->newSubscription($plan, $plan)->create($stripeToken);
+        try {
+            $user->newSubscription($plan, $plan)->create($stripeToken);
+        } catch (\Exception $e) {
+            return response()->json(['status' => $e->getMessage()], 422);
+        }
+
+        return "All good";
 
     }
 

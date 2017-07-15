@@ -33,6 +33,10 @@
                         .then(response => {
                             this.$emit('isLoading', false);
                             window.location.href = window.url + "/subscribed";
+                        })
+                        .catch(error => {
+                            this.$emit('isLoading', false);
+                            window.flash('danger', error.response.data.status);
                         });
                 }
             });

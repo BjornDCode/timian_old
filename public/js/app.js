@@ -41967,6 +41967,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 window.axios.post('/subscribe', _this.$data.formData).then(function (response) {
                     _this.$emit('isLoading', false);
                     window.location.href = window.url + "/subscribed";
+                }).catch(function (error) {
+                    _this.$emit('isLoading', false);
+                    window.flash('danger', error.response.data.status);
                 });
             }
         });

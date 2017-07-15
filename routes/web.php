@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('/stripe/webhook', 'StripeWebhooksController@handleWebhook');
+
 Route::get('/plans', 'SubscriptionsController@index');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 

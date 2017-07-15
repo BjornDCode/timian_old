@@ -4,7 +4,7 @@ window._ = require('lodash');
 window.Timian = {
     token: document.head.querySelector('meta[name="csrf-token"]').content,
     url: document.head.querySelector('meta[name="url"]').content,
-    user: document.head.querySelector('meta[name="user"]').content,
+    user: JSON.parse(document.head.querySelector('meta[name="user"]').content),
     stripeKey: document.head.querySelector('meta[name="stripe-key"]').content
 };
 

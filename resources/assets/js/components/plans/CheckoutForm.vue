@@ -24,6 +24,7 @@
                 image: "https://stripe.com/img/documentation/checkout/marketplace.png",
                 locale: "auto",
                 panelLabel: "Subscribe For",
+                email: Timian.user.email,
                 token: token => {
                     this.formData.stripeToken = token.id;
                     this.formData.stripeEmail = token.email;
@@ -31,7 +32,6 @@
 
                     window.axios.post('/subscribe', this.$data.formData)
                         .then(response => {
-                            console.log('redirect');
                             this.$emit('isLoading', false);
                             window.location.href = window.Timian.url + "/subscribed";
                         })

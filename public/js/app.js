@@ -900,7 +900,7 @@ window._ = __webpack_require__(12);
 window.Timian = {
     token: document.head.querySelector('meta[name="csrf-token"]').content,
     url: document.head.querySelector('meta[name="url"]').content,
-    user: document.head.querySelector('meta[name="user"]').content,
+    user: JSON.parse(document.head.querySelector('meta[name="user"]').content),
     stripeKey: document.head.querySelector('meta[name="stripe-key"]').content
 };
 
@@ -41961,13 +41961,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             image: "https://stripe.com/img/documentation/checkout/marketplace.png",
             locale: "auto",
             panelLabel: "Subscribe For",
+            email: Timian.user.email,
             token: function token(_token) {
                 _this.formData.stripeToken = _token.id;
                 _this.formData.stripeEmail = _token.email;
                 _this.$emit('isLoading', true);
 
                 window.axios.post('/subscribe', _this.$data.formData).then(function (response) {
-                    console.log('redirect');
                     _this.$emit('isLoading', false);
                     window.location.href = window.Timian.url + "/subscribed";
                 }).catch(function (error) {

@@ -31,7 +31,9 @@ class SubscriptionsController extends Controller
             return response()->json(['status' => $e->getMessage()], 422);
         }
 
-        return "All good";
+        return [
+            'status' => 'Success'
+        ];
 
     }
 

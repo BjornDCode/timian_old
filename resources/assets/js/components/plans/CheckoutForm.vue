@@ -38,7 +38,6 @@
                         })
                         .catch(error => {
                             this.$emit('isLoading', false);
-                            console.log(error);
                             window.flash('danger', error.response.data.status);
                         });
                 }

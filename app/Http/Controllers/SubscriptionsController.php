@@ -28,6 +28,10 @@ class SubscriptionsController extends Controller
         $stripeToken = request('stripeToken');
         $user = auth()->user();
 
+        if ($user->isActive()) {
+            return response()->json(['status' => 'You are already subscribed'], 403);
+        }
+
         try {
             $user->newSubscription($plan, $plan)->create($stripeToken);
         } catch (Exception $e) {

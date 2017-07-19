@@ -41973,6 +41973,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     window.location.href = Timian.url + "/subscribed";
                 }).catch(function (error) {
                     _this.$emit('isLoading', false);
+                    console.log(error);
                     window.flash('danger', error.response.data.status);
                 });
             }
